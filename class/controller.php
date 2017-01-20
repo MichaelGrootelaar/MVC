@@ -1,9 +1,9 @@
 <?php
-  class Controller {
-    private $model;
+  require_once('class/view.php');
 
-    public function __construct(Model $model) {
-        $this->model = $model;
+  class Controller extends View {
+    function actionIndex() {
+      return $this->render('view/fun.php', array('wtf' => 'sdfasfas'));
     }
   }
 ?>

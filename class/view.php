@@ -1,13 +1,17 @@
 <?php
-  class View {
-    private $model;
+  abstract class View {
+    /**
+    * Renders the pages.
+    * @param $file = String, $variables = Array
+    * @return ??
+    */
+    function render($file, $variables = array()) {
+        extract($variables);
 
-    public function __construct(Model $model) {
-      $this->model = $model;
-    }
+        ob_start();
+        include $file;
+        $renderedView = ob_get_clean();
 
-    public function output() {
-      return '<h1>' . $this->model->text .'</h1>';
+        return $renderedView;
     }
   }
-?>
